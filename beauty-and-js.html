@@ -126,7 +126,7 @@
 			<li>Lots of code</li>
 			<li>To be taken with grain of salt</li>
 		</ul></li>
-	</ul><
+	</ul>
 </div>
 
 
@@ -134,9 +134,9 @@
 	<h1>JavaScript libraries: the two towers</h1>
 	<p>Two major types of JavaScript libraries:
 	<ol>
-		<li>Cross-browser DOM & AJAX libraries:
+		<li>Cross-browser DOM &amp; AJAX libraries:
 		<ul>
-			<li>jQuery, Ext.JS, Dojo, YUI, ...</li>
+			<li>jQuery, Ext.JS, Dojo, YUI, UIZE, ...</li>
 		</ul></li>
 		<li>Frameworks with language extensions:
 		<ul>
@@ -165,7 +165,43 @@
 </div>
 
 <div class="slide">
-	<h1>...</h1>
+	<h1>With jQuery, everything is easy!...</h1>
+	<pre>
+&lt;script type="text/javascript"&gt;
+
+	$(document).ready(document_ready);
+
+	function document_ready() {
+		$(".my").bind('click', myButton_click);
+	}
+
+	function myButton_click() {
+		$(this).css("background-color", "red").fadeOut();
+	}
+
+&lt;/script&gt;
+	</pre>
+</div>
+
+<div class="slide">
+	<h1>...or is it?</h1>
+	<pre>
+(function($) {
+    $(document).ready(function() {
+        for (var i = 0; i &lt; BUTTON_COUNT; ++i) {
+          $("#button" + i).bind("click", (function(k) {
+              return function() {
+                  $.post("/rpc/foo", { index: k}, function(resp) {
+                      if (resp) {
+                          alert("[" + k + "] = " + resp.message);
+                      }
+                  });
+              };
+          })(i))
+        }
+    });
+})(jQuery);
+	</pre>
 </div>
 
 </div>
