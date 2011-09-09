@@ -219,7 +219,7 @@
 			<li>Having "keyword" <code>inherits</code> doesn't mean we have true inheritance</li>
 			<li>Interpreter will <strong>not</strong> check if we use the modified language correctly</li>
 		</ul></li>
-		<li><small><em>Aside</em>: What other languages actually allow you to add <strong>whole paradigms</strong> to them?</small></li>
+		<li><small><em>Aside</em>: What other languages actually allow you to implement <strong>whole paradigms</strong> in them?</small></li>
 	</ul>
 </div>
 
@@ -227,7 +227,24 @@
 <div class="slide">
 	<h1>Back to basics</h1>
 	<ul>
-		<li>...</li>
+		<li>JavaScript is:
+		<ul>
+			<li>intepreted</li>
+			<li>dynamically-typed</li>
+			<li class="incremental">object-oriented</li>
+			<li class="incremental">prototype-based</li>
+		</ul></li>
+		<li>JavaScript has <em>no notion</em> of classes
+		<ul>
+			<li>Every object is of type <code>object</code></li>
+			<li>You cannot define new types - you can only create new objects</li>
+		</ul></li>
+		<li>The core concept of JavaScript's object model is <strong>prototype</strong>
+		<ul>
+			<li>It's not a class!</li>
+			<li>Prototype is a "parent" or "template" for an <em>object</em></li>
+			<li>Attributes not present in object are taken from its prototype</li>
+		</ul></li>
 	</ul>
 </div>
 
