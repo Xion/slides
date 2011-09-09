@@ -161,7 +161,7 @@
 		<li>Libraries like jQuery are one of reasons why JavaScript is sometimes called "assembler of the Web"</li>
 	</ul>
 	<br/>
-	<small>* slightly above 50% according to <a href="http://w3techs.com/technologies/overview/javascript_library/all">W3 Techs</a></small>
+	<small>* slightly above 50% of websites according to <a href="http://w3techs.com/technologies/overview/javascript_library/all">W3 Techs</a></small>
 </div>
 
 <div class="slide">
@@ -197,11 +197,38 @@
                       }
                   });
               };
-          })(i))
+          })(i));
         }
     });
 })(jQuery);
 	</pre>
+</div>
+
+<div class="slide">
+	<h1>"Solution": let's fix the language!</h1>
+	<ul>
+		<li>Frameworks like MooTools attempt to "extend" JavaScript:
+		<ul>
+			<li>Import classic OO concepts such as classes and inheritance</li>
+			<li>Force it to be more like other languages</li>
+			<li>Make PHP/Java/C#/etc. programmers feel relatively comfortable</li>
+		</ul></li>
+		<li>Result is artificial, at best:
+		<ul>
+			<li>Every framework does it in slightly different way</li>
+			<li>Having "keyword" <code>inherits</code> doesn't mean we have true inheritance</li>
+			<li>Interpreter will <strong>not</strong> check if we use the modified language correctly</li>
+		</ul></li>
+		<li><small><em>Aside</em>: What other languages actually allow you to add <strong>whole paradigms</strong> to them?</small></li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Back to basics</h1>
+	<ul>
+		<li>...</li>
+	</ul>
 </div>
 
 </div>
