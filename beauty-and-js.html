@@ -231,8 +231,8 @@
 		<ul>
 			<li>intepreted</li>
 			<li>dynamically-typed</li>
-			<li class="incremental">object-oriented</li>
-			<li class="incremental">prototype-based</li>
+			<li>object-oriented</li>
+			<li>prototype-based</li>
 		</ul></li>
 		<li>JavaScript has <em>no notion</em> of classes
 		<ul>
@@ -244,6 +244,29 @@
 			<li>It's not a class!</li>
 			<li>Prototype is a "parent" or "template" for an <em>object</em></li>
 			<li>Attributes not present in object are taken from its prototype</li>
+		</ul></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Function is king</h1>
+	<ul>
+		<li><code>function</code> is about the only structural construct in JavaScript
+		<ul>
+			<li>Program in JavaScript is essentially a set of ((deeply) nested) functions</li>
+			<li>No classes, remember? :)</li>
+		</ul></li>
+		<li>Functions work as <em>first-order values</em>:
+		<ul>
+			<li>Can be stored in variables</li>
+			<li>Can be passed as arguments to other functions</li>
+			<li>Can be returned as functions' results</li>
+		</ul></li>
+		<li>Functions can be nested, creating <strong>closures</strong>:
+		<ul>
+			<li>Outside variables are "captured" within the closure and can be modified...</li>
+			<li>...regardless of how the function is passed around and when it's actually called</li>
+			<li>Classic example: <em>event handlers</em></li>
 		</ul></li>
 	</ul>
 </div>
