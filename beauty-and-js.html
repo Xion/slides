@@ -247,7 +247,7 @@
 		</ul></li>
 		<li>JavaScript has <em>no notion</em> of classes
 		<ul>
-			<li>Every object is of type <code>object</code></li>
+			<li>Everything is just an object</li>
 			<li>You cannot define new types - you can only create new objects</li>
 		</ul></li>
 		<li>The core concept of JavaScript's object model is <strong>prototype</strong>
@@ -315,7 +315,70 @@ console.log("alice".capitalize());  // "Alice"
 			<li>encapsulation</li>
 			<li>inheritance</li>
 		</ul></li>
+		<li>Extension frameworks use closures to simulate the concepts above</li>
 	</ul>
+</div>
+
+<div class="slide">
+	<h1>Variable scoping</h1>
+	<ul>
+		<li>By default, JavaScript variables are <strong>global</strong>
+		<ul>
+			<li>Yes, even those declared inside functions!</li>
+		</ul></li>
+		<li>We can use <code>var</code> keyword to achieve <em>function scope</em>
+		<ul>
+			<li>Obviously, function arguments also have function scope</li>
+		</ul></li>
+		<li>Common technique to avoid polluting global namespace is to use anonymous function which is immediately called</li>
+	</ul>
+	<br/>
+	<pre>
+(function($) {
+  // using $ here will not conflict
+  // with any outside code that uses the same symbol
+})(jQuery);
+	</pre>
+</div>
+
+<div class="slide">
+	<h1>Creating "modules"</h1>
+	<ul>
+		<li>JavaScript does not have equivalent of packages, assemblies or namespaces</li>
+		<li>To simulate them, it is customary to group functions into objects</li>
+	</ul>
+	<br/>
+	<pre>
+var temps = {
+    toCelsius: function(fahrenheit) {
+        return 5/9 * (fahrenheit - 32);
+    },
+    toFahrenheit: function(celsius) {
+        return 9/5 * celsius + 32;
+    },
+};
+
+console.log("80^F is " + temps.toCelsius(80) + "^C");
+	</pre>
+</div>
+
+<div class="slide">
+	<h1>Hiding internals</h1>
+	<ul>
+		<li>By combining function scope and closures, we can create modules that hide their implementation details</li>
+		<li>The trick is again to use anonymous function which is called on a spot</li>
+	</ul>
+	<br/>
+	<pre>
+var counter = (function() {
+    var value = 0;
+    return {
+        increment: function(by) { value += by || 1; },
+        decrement: function(by) { value -= by || 1; },
+        getValue:  function()   { return value; },
+    };
+})();
+	</pre>
 </div>
 
 </div>
