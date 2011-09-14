@@ -174,10 +174,10 @@
 	$(document).ready(document_ready);
 
 	function document_ready() {
-		$("#myButton").bind("click", myButton_click);
+		$("#myButton").bind("mouseover", myButton_mouseover);
 	}
 
-	function myButton_click() {
+	function myButton_mouseover() {
 		$(this).css("background-color", "red").fadeOut();
 	}
 
@@ -335,8 +335,8 @@ console.log("alice".capitalize());  // "Alice"
 	<br/>
 	<pre>
 (function($) {
-  // using $ here will not conflict
-  // with any outside code that uses the same symbol
+  // using $ here will not conflict with
+  // any outside code that uses the same symbol
 })(jQuery);
 	</pre>
 </div>
@@ -381,6 +381,12 @@ var counter = (function() {
 	</pre>
 </div>
 
+</div>
+
+<div class="slide">
+	<h1></h1>
+	<ul>
+	</ul>
 </div>
 
 </body>
