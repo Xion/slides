@@ -67,6 +67,7 @@
 		<ul>
 			<li>server-side code (<em>Node.js</em>)</li>
 			<li>mobile apps (<em>PhoneGap</em>, <em>MonoTouch</em>, ...)</li>
+			<li>desktop apps (Windows 8)</li>
 		</ul></li>
 	</ul>
 	<div class="handout">
@@ -384,7 +385,36 @@ var counter = (function() {
 </div>
 
 <div class="slide">
-	<h1></h1>
+	<h1>Inheritance of objects</h1>
+	<ul>
+		<li>Due to lack of classes, 'inheritance' in JavaScript usually means creating new <em>object</em> based on existing one
+		<ul>
+			<li>Existing object is used as prototype</li>
+		</ul></li>
+		<li>Closures are used to hide private variables and functions</li>
+	</ul>
+	<br/>
+	<pre>
+var counterEx = (function(counter) {
+   var c = {};
+   c.prototype = counter;
+
+   var precision = 2; // private "field"
+
+   c.setPrecision = function(p) {
+       precision = Math.max(p, 1);
+   };
+   c.print = function() {
+       console.log("Counter = " + c.getValue().toFixed(precision));
+   };
+
+   return c;
+})(counter);
+	</pre>
+</div>
+
+<div class="slide">
+	<h1>Functions as constructors</h1>
 	<ul>
 	</ul>
 </div>
