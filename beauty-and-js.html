@@ -387,10 +387,7 @@ var counter = (function() {
 <div class="slide">
 	<h1>Inheritance of objects</h1>
 	<ul>
-		<li>Due to lack of classes, 'inheritance' in JavaScript usually means creating new <em>object</em> based on existing one
-		<ul>
-			<li>Existing object is used as prototype</li>
-		</ul></li>
+		<li>Due to lack of classes, 'inheritance' in JavaScript usually means creating new <em>object</em> using existing one as prototype</li>
 		<li>Closures are used to hide private variables and functions</li>
 	</ul>
 	<br/>
@@ -400,23 +397,50 @@ var counterEx = (function(counter) {
    c.prototype = counter;
 
    var precision = 2; // private "field"
-
-   c.setPrecision = function(p) {
-       precision = Math.max(p, 1);
-   };
+   c.setPrecision = function(p) { precision = Math.max(p, 1) };
    c.print = function() {
        console.log("Counter = " + c.getValue().toFixed(precision));
    };
-
    return c;
 })(counter);
 	</pre>
 </div>
 
+
 <div class="slide">
-	<h1>Functions as constructors</h1>
+	<h1>More traditional approach</h1>
 	<ul>
+		<li>Besides beforementioned "OOP by closures", JavaScript also offers an approach that resembles classic OO techniques
+		<ul>
+			<li>It is not valued highly by JS purists, though</li>
+		</ul></li>
+		<li>It uses a special type of function invocation: constructor call (<code>new</code> keyword)</li>
+		<li>Constructor function accesses/initializes  the new object via <code>this</code> keyword</li>
+		<li>Methods can be added as attributes of <code><em>ConstructorName</em>.prototype</code></li>
 	</ul>
+</div>
+
+<div class="slide">
+	<h1>Almost like classes!</h1>
+	<pre>
+function Vector2(x, y) {
+    this.x = x || 0;
+    this.y = y || 0;
+}
+
+Vector2.prototype.length = function() {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+}
+Vector2.prototype.translate = function(dx, dy) {
+    this.x += dx; this.y += dy;
+}
+Vector2.prototype.scale = function(k) {
+    this.x *= k; this.y *= k;
+}
+
+var vec = new Vector2(1, 2);
+vec.scale(42);
+	</pre>
 </div>
 
 </body>
