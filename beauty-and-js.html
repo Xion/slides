@@ -367,7 +367,7 @@ console.log("80^F is " + temps.toCelsius(80) + "^C");
 	<h1>Hiding internals</h1>
 	<ul>
 		<li>By combining function scope and closures, we can create modules that hide their implementation details</li>
-		<li>The trick is again to use anonymous function which is called on a spot</li>
+		<li>Again, trick is an anonymous function which is called at once</li>
 	</ul>
 	<br/>
 	<pre>
@@ -379,7 +379,14 @@ var counter = (function() {
         getValue:  function()   { return value; },
     };
 })();
+
+counter.increment();
+console.log("Counter's value == " + counter.getValue());
 	</pre>
+</div>
+
+<div class="slide">
+	<h1></h1>
 </div>
 
 </div>
@@ -441,6 +448,26 @@ Vector2.prototype.scale = function(k) {
 var vec = new Vector2(1, 2);
 vec.scale(42);
 	</pre>
+</div>
+
+<div class="slide">
+	<h1>Is it bad?...</h1>
+	<ul>
+		<li>It works and it's simple</li>
+		<li>But while it's useful, this approach has some problems on its own:
+		<ul>
+			<li>It offers <strong>no encapsulation</strong> whatsoever</li>
+			<li>The constructor function can still be called normally and yield unexpected results</li>
+			<li><code>this</code> keyword in JS can be <strong>very</strong> misleading</li>
+		</ul></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1></h1>
+	<ul>
+		
+	</ul>
 </div>
 
 </body>
