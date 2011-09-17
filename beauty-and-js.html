@@ -464,10 +464,24 @@ vec.scale(42);
 </div>
 
 <div class="slide">
-	<h1></h1>
+	<h1>How does <em>this</em> work?</h1>
 	<ul>
-		
+		<li>Meaning of <code>this</code> depends on which function it is used in and how it was called</li>
+		<li>It becomes a problem when nested functions are involved</li>
+		<li>Solution: bind <code>this</code> to local variable (usually named <code>that</code>)</li>
 	</ul>
+	<br/>
+	<pre>
+Game.prototype.update = function(dt) {
+    var objects = this.objects;
+    this.objects = [];
+    var that = this;
+    $.each(objects, function() {
+        var active = this.update(dt);
+        if (active) that.objects.push(this);
+    });
+};
+	</pre>
 </div>
 
 </body>
