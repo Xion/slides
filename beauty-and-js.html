@@ -263,7 +263,7 @@
 <div class="slide">
 	<h1>Prototypes by example</h1>
 	<ul>
-		<li>Each JavaScript type (<code>String</code>, <code>Number</code>, <code>Array</code>, <code>Object</code>, <code>Function</code>) has a built-in, predefined prototype
+		<li>Each JavaScript type (<code>Boolean</code>, <code>String</code>, <code>Number</code>, <code>Array</code>, <code>Object</code>, <code>Function</code>) has a built-in, predefined prototype
 		<ul>
 			<li>It's used by every instance of particular type</li>
 			<li>We can access it via <code>prototype</code> attribute</li>
@@ -315,11 +315,14 @@ console.log("alice".capitalize());  // "Alice"
 	<h1>Closures by example</h1>
 	<pre>
 function getMoreItems() {
+
     $.getJSON("/rpc/get_more", function(response) {
+
         var items = [];
         $.each(response.items, function(idx, val) {
             <strong>items</strong>.push("[" + val.type + "] " + val.text);
         });
+
         showItems(items);
     });
 }
@@ -511,7 +514,7 @@ vec.scale(42);
 			</ul></li>
 			<li>The constructor function can still be called normally, i.e. without <code>new</code>
 			<ul>
-				<li>It will return <code>undefined</code> as result</li>
+				<li>Results will be <em>bad</em></li>
 			</ul></li>
 			<li><code>this</code> keyword in JS can be <strong>very</strong> misleading</li>
 		</ul></li>
@@ -519,10 +522,10 @@ vec.scale(42);
 </div>
 
 <div class="slide">
-	<h1>How does <em>this</em> work?</h1>
+	<h1><em>This</em>... how does it work?</h1>
 	<ul>
-		<li>Meaning of <code>this</code> depends on which function it is used in and how it was called</li>
-		<li>It becomes a problem when nested functions are involved</li>
+		<li>Meaning of <code>this</code> varies between functions</li>
+		<li>It's a problem esp. when nested functions are involved</li>
 		<li>Solution: bind <code>this</code> to local variable (usually named <code>that</code>)</li>
 	</ul>
 	<br/>
@@ -531,10 +534,52 @@ Game.prototype.setupEventHandlers = function() {
     var that = this;
     $("#gamefield").bind("click", function(event) {
          var obj = that.hitTest(event);
-         if (obj) obj.click();
+         if (obj) {
+             obj.click(event);
+             that.render(this);
+         }
     });
 };
 	</pre>
+</div>
+
+
+<div class="slide">
+	<h1>And that's how it goes</h1>
+	<ul>
+		<li>You can see that there is much more to JavaScript than it is obvious at first sight</li>
+		<li>This includes all the flaws mentioned, and more - such as:
+		<ul>
+			<li>Having only floating-point numbers (yes, even for indices!)</li>
+			<li>Misleading weak typing:
+			<ul>
+				<li><code>"1" + 1</code> yields <code>"11"</code>, but <code>"1" - 1</code> yields <code>0</code></li>
+				<li><code>if (x)</code> and <code>if (x == true)</code> behave differently when <code>x</code> is <code>"0"</code> or <code>[]</code></li>
+			</ul></li>
+			<li>Arrays are not separate entities - they are objects with indices as properties</li>
+			<li>There are no separate maps/dictionaries/hashes either, so we need to use objects
+			<ul>
+				<li>...which "have" properties from their prototypes by default</li>	
+				<li>Also, iterating correctly over objects is verbose (hence <code>$.each</code>)</li>
+			</ul></li>
+		</ul></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>If you want to learn more...</h1>
+	<ul>
+		<li>Read <em>JavaScript: The Good Parts</em> - it's thin :)</li>
+		<li>Browse <strong>good</strong> JavaScript code
+		<ul>
+			<li>jQuery source is nice example</li>
+		</ul></li>
+		<li>Write something since practice is always better than theory</li>
+	</ul>
+	<br/>
+	<ul>
+		<li style="font-size: larger">You can also ask some questions now :)</li>
+	</ul>
 </div>
 
 </body>
