@@ -172,15 +172,15 @@
 	<pre>
 &lt;script type="text/javascript"&gt;
 
-	$(document).ready(document_ready);
+    $(document).ready(document_ready);
 
-	function document_ready() {
-		$("#myButton").bind("mouseover", myButton_mouseover);
-	}
+    function document_ready() {
+        $("#myButton").bind("mouseover", myButton_mouseover);
+    }
 
-	function myButton_mouseover() {
-		$("#myButton").css("background-color", "red").fadeOut();
-	}
+    function myButton_mouseover() {
+        $("#myButton").css("background-color", "red").fadeOut();
+    }
 
 &lt;/script&gt;
 	</pre>
@@ -283,6 +283,11 @@ String.prototype.capitalize = function() {
 
 console.log("alice".capitalize());  // "Alice"
 	</pre>
+	<div class="handout">
+		Note that <code>Array</code> is not actually a type (since <code>typeof([]) == "object"</code>), but
+		every array has a prototype of <code>Array.prototype</code>. Hence it is possible to add methods
+		that will work for all arrays.
+	</div>
 </div>
 
 <div class="slide">
@@ -313,7 +318,7 @@ function getMoreItems() {
     $.getJSON("/rpc/get_more", function(response) {
         var items = [];
         $.each(response.items, function(idx, val) {
-            items.push("[" + val.type + "] " + val.text);
+            <strong>items</strong>.push("[" + val.type + "] " + val.text);
         });
         showItems(items);
     });
@@ -366,6 +371,19 @@ for (var idx in response.items) {
   // any outside code that uses the same symbol
 })(jQuery);
 	</pre>
+	<div class="handout">
+		Bear in mind that JavaScript has no local scope. So in the following example, both <code>x</code> and <code>y</code> share the same scope:
+		<pre>
+function foo(arg) {
+    var x;
+    if (arg > 0) {
+        var y;
+        // ...
+    }
+}
+		</pre>
+		Due to this, it is often suggested for all variables to be declared at the beginning of function (like in C).
+	</div>
 </div>
 
 <div class="slide">
@@ -433,6 +451,11 @@ var counterEx = (function(counter) {
    return c;
 })(counter);
 	</pre>
+	<div class="handout">
+		Note how previous slide talked about creating a "module" (named <code>counter</code>) and this one uses this
+		"module" as base for inheritance. That's because the distinction is moot. Both <code>counter</code> and <code>counterEx</code> are
+		in fact just objects.
+	</div>
 </div>
 
 
