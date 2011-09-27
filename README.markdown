@@ -3,8 +3,8 @@ Overview
 This repository contains slides from various talks and presentations that I had given on different occasions.
 They are structured as distinct branches in the repository.
 
-If you are viewing this on GitHub website, you can use the _Switch Branches_ dropdown to navigate between them.
-If you have cloned the repo, <code>git checkout _name_</code> should switch you to branch of specified _name_.
+* If you are viewing this on GitHub website, you can use the _Switch Branches_ dropdown to navigate between them.
+* If you have cloned the repo, <code>git checkout _name_</code> should switch you to branch of specified _name_.
 
 Contents
 -
