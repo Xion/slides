@@ -277,7 +277,7 @@
 	<pre>
 String.prototype.capitalize = function() {
   var firstLetter = this.substr(0, 1).toUpperCase();
-  var rest = this.substr(0, 1).toUpperCase();
+  var rest = this.substr(1).toLowerCase();
   return firstLetter + rest;
 }
 
