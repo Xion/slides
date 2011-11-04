@@ -11,3 +11,4 @@ Contents
 Currently, the repository contains following branches:
 
 * _beauty-and-js_ - Slides from the talk _The Beauty and the JavaScript_ which I have given on 19th October 2011 at [Polidea](http://www.polidea.pl).
+* _c2dm_ - Slides from the talk _Push! - Instant notifications on Android through C2DM_ which I have given on 4th November 2011 at [Polidea](http://www.polidea.pl).
