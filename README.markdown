@@ -1,0 +1,1 @@
+This branch contains the slides from presentation _Push! - Instant notifications on Android through C2DM_, which I have given on 4th November, 2011 at [Polidea](http://www.polidea.pl).
